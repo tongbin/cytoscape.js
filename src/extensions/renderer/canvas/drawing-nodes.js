@@ -152,6 +152,7 @@ CRp.drawNode = function( context, node, shiftToOriginWithBb, drawLabel ){
     context.fill();
   }
 
+
   this.shadowStyle( context, 'transparent', 0 ); // reset for next guy
 
   //
@@ -206,6 +207,25 @@ CRp.drawNode = function( context, node, shiftToOriginWithBb, drawLabel ){
     } else {
       context.fill();
     }
+  }
+
+
+  //
+  // show something in the node
+  var bgText = node.pstyle( 'background-font-icon' );
+  var bgFontFamily = node.pstyle( 'background-font-icon-family' );
+  if ( bgText !== undefined && bgFontFamily !== undefined ) {
+    bgText = bgText.value;
+    context.save();
+    // font size, font color
+    var bgTextSize = Math.floor( (node.pstyle( 'background-font-icon-fill' ) || {pfValue: .6}).pfValue * nodeHeight );
+    var bgTextColor = (node.pstyle( 'background-font-icon-color' ) || {strValue: '#000'}).strValue;
+
+    context.font = bgTextSize + 'px ' + bgFontFamily.strValue;
+    context.fillStyle = bgTextColor;
+    context.fillText( bgText , 0, bgTextSize/2 );
+
+    context.restore();
   }
 
   //
