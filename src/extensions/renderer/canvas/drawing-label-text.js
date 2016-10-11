@@ -163,6 +163,7 @@ function roundRect( ctx, x, y, width, height, radius ){
 
 // Draw text
 CRp.drawText = function( context, ele, prefix ){
+  context.save();
   var _p = ele._private;
   var rscratch = _p.rscratch;
   var parentOpacity = ele.effectiveOpacity();
@@ -353,11 +354,12 @@ CRp.drawText = function( context, ele, prefix ){
       }
 
     } else {
+      context.scale( .6, .6 );
       if( lineWidth > 0 ){
-        context.strokeText( text, textX, textY );
+        context.strokeText( text, textX / .6, textY / .6 - 3 );
       }
 
-      context.fillText( text, textX, textY );
+      context.fillText( text, textX / .6, textY /.6 - 3 );
     }
 
     if( theta !== 0 ){
@@ -366,6 +368,7 @@ CRp.drawText = function( context, ele, prefix ){
     }
 
     this.shadowStyle( context, 'transparent', 0 ); // reset for next guy
+    context.restore();
   }
 };
 

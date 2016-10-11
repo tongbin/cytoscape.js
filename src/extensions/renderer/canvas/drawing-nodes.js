@@ -256,6 +256,25 @@ CRp.drawNode = function( context, node, shiftToOriginWithBb, drawLabel ){
 
   }
 
+  // show something on the right top corner of the node
+  var topText = node.pstyle( 'top-right-icon' );
+  var topFontFamily = node.pstyle( 'top-right-icon-family' );
+  if (topText !== undefined && topFontFamily !== undefined) {
+    topText = topText.strValue;
+    context.save();
+    // font size, font color
+    var topTextColor = (node.pstyle( 'top-font-icon-color' ) || {strValue: '#000'}).strValue;
+
+    context.font = '10px ' + topFontFamily.strValue;
+    context.fillStyle = topTextColor;
+    context.translate( nodeWidth * .4 , nodeHeight * (-.3) );
+    context.scale(0.7, 0.7);
+    context.rotate(Math.PI/4);
+    context.fillText( topText , 0, 0 );
+
+    context.restore();
+  }
+
   if( usePaths ){
     context.translate( -pos.x, -pos.y );
   }

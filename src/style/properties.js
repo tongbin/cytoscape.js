@@ -196,7 +196,6 @@ var styfn = {};
 
     // node background images
     { name: 'background-image', type: t.url },
-    { name: 'background-image-opacity', type: t.zeroOneNumber },
     { name: 'background-position-x', type: t.bgPos },
     { name: 'background-position-y', type: t.bgPos },
     { name: 'background-repeat', type: t.bgRepeat },
@@ -204,6 +203,17 @@ var styfn = {};
     { name: 'background-clip', type: t.bgClip },
     { name: 'background-width', type: t.bgWH },
     { name: 'background-height', type: t.bgWH },
+    // node background icon
+    { name: 'background-font-icon', type: t.text },
+    { name: 'background-font-icon-fill', type: t.zeroOneNumber },
+    { name: 'background-font-icon-family', type: t.fontFamily },
+    { name: 'background-font-icon-color', type: t.color },
+    { name: 'background-image-opacity', type: t.zeroOneNumber },
+
+    // node top right icon
+    { name: 'top-right-icon', type: t.text },
+    { name: 'top-right-icon-family', type: t.fontFamily },
+    { name: 'top-font-icon-color', type: t.color },
 
     // compound props
     { name: 'position', type: t.position },
