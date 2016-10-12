@@ -190,6 +190,7 @@ CRp.drawText = function( context, ele, prefix ){
 
     var halign = ele.pstyle( 'text-halign' ).value;
     var valign = ele.pstyle( 'text-valign' ).value;
+    var scale = ele.pstyle( 'text-scale' ).value;
 
     if( isEdge ){
       halign = 'center';
@@ -329,6 +330,11 @@ CRp.drawText = function( context, ele, prefix ){
       context.lineWidth = lineWidth;
     }
 
+    var scalePadding = textH * ( 1 - scale ) / 2;
+    if ( scale > 0 ) {
+      context.scale(scale, scale);
+    }
+
     if( ele.pstyle( 'text-wrap' ).value === 'wrap' ){
       var lines = rscratch.labelWrapCachedLines;
       var lineHeight = textH / lines.length;
@@ -345,7 +351,11 @@ CRp.drawText = function( context, ele, prefix ){
 
       for( var l = 0; l < lines.length; l++ ){
         if( lineWidth > 0 ){
-          context.strokeText( lines[ l ], textX, textY );
+          if (scale > 0) {
+            context.strokeText( lines[ l ], textX / scale - scalePadding, textY /scale - scalePadding );
+          } else {
+            context.strokeText( lines[ l ], textX, textY );
+          }
         }
 
         context.fillText( lines[ l ], textX, textY );
@@ -354,12 +364,18 @@ CRp.drawText = function( context, ele, prefix ){
       }
 
     } else {
-      context.scale( .6, .6 );
       if( lineWidth > 0 ){
-        context.strokeText( text, textX / .6, textY / .6 - 3 );
+        if ( scale > 0 ) {
+          context.strokeText( text, textX / scale , textY / scale - scalePadding );
+        } else {
+          context.strokeText( text, textX, textY );
+        }
       }
-
-      context.fillText( text, textX / .6, textY /.6 - 3 );
+      if ( scale > 0 ) {
+        context.fillText( text, textX / scale, textY / scale - scalePadding );
+      } else {
+        context.fillText( text, textX, textY );
+      }
     }
 
     if( theta !== 0 ){

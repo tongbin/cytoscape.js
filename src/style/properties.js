@@ -96,6 +96,7 @@ var styfn = {};
     // main label
     { name: 'label', type: t.text },
     { name: 'text-rotation', type: t.textRotation },
+    { name: 'text-scale', type: t.zeroOneNumber },
     { name: 'text-margin-x', type: t.bidirectionalSize },
     { name: 'text-margin-y', type: t.bidirectionalSize },
 
@@ -338,6 +339,7 @@ styfn.getDefaultProperties = util.memoize( function(){
     'font-size': 16,
     'min-zoomed-font-size': 0,
     'text-rotation': 'none',
+    'text-scale': 1,
     'source-text-rotation': 'none',
     'target-text-rotation': 'none',
     'visibility': 'visible',
