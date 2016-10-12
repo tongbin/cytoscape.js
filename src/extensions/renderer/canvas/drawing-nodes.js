@@ -258,12 +258,12 @@ CRp.drawNode = function( context, node, shiftToOriginWithBb, drawLabel ){
 
   // show something on the right top corner of the node
   var topText = node.pstyle( 'top-right-icon' );
-  if (topText !== undefined) {
+  if (topText != undefined) {
     var topFontFamily = node.pstyle( 'top-right-icon-family' );
     topText = topText.strValue;
     context.save();
     // font size, font color
-    var topTextColor = node.pstyle( 'top-font-icon-color' ).strValue;
+    var topTextColor = node.pstyle( 'top-right-icon-color' ).strValue;
 
     context.font = '12px ' + topFontFamily.strValue;
     context.fillStyle = topTextColor;

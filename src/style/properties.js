@@ -214,9 +214,9 @@ var styfn = {};
     // node top right icon
     { name: 'top-right-icon', type: t.text },
     { name: 'top-right-icon-family', type: t.fontFamily },
-    { name: 'top-font-icon-color', type: t.color },
-    { name: 'top-font-icon-scale', type: t.number },
-    { name: 'top-font-icon-rotate', type: t.number },
+    { name: 'top-right-icon-color', type: t.color },
+    { name: 'top-right-icon-scale', type: t.number },
+    { name: 'top-right-icon-rotate', type: t.number },
 
     // compound props
     { name: 'position', type: t.position },
@@ -403,8 +403,10 @@ styfn.getDefaultProperties = util.memoize( function(){
     'background-font-icon-color': '#000',
 
     // node top right icon
-    'top-font-icon-color': '#000',
+    'top-right-icon-color': '#000',
     'top-right-icon-family': 'FontAwesome',
+    'top-right-icon-rotate': 0,
+    'top-right-icon-scale': 1,
 
     // compound props
     'padding-top': 0,
