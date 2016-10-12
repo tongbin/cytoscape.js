@@ -218,8 +218,8 @@ CRp.drawNode = function( context, node, shiftToOriginWithBb, drawLabel ){
     bgText = bgText.value;
     context.save();
     // font size, font color
-    var bgTextSize = Math.floor( (node.pstyle( 'background-font-icon-fill' ) || {pfValue: .6}).pfValue * nodeHeight );
-    var bgTextColor = (node.pstyle( 'background-font-icon-color' ) || {strValue: '#000'}).strValue;
+    var bgTextSize = Math.floor( node.pstyle( 'background-font-icon-fill' ).pfValue * nodeHeight );
+    var bgTextColor = node.pstyle( 'background-font-icon-color' ).strValue;
 
     context.font = bgTextSize + 'px ' + bgFontFamily.strValue;
     context.fillStyle = bgTextColor;
@@ -258,14 +258,14 @@ CRp.drawNode = function( context, node, shiftToOriginWithBb, drawLabel ){
 
   // show something on the right top corner of the node
   var topText = node.pstyle( 'top-right-icon' );
-  var topFontFamily = node.pstyle( 'top-right-icon-family' );
-  if (topText !== undefined && topFontFamily !== undefined) {
+  if (topText !== undefined) {
+    var topFontFamily = node.pstyle( 'top-right-icon-family' );
     topText = topText.strValue;
     context.save();
     // font size, font color
-    var topTextColor = (node.pstyle( 'top-font-icon-color' ) || {strValue: '#000'}).strValue;
+    var topTextColor = node.pstyle( 'top-font-icon-color' ).strValue;
 
-    context.font = '10px ' + topFontFamily.strValue;
+    context.font = '12px ' + topFontFamily.strValue;
     context.fillStyle = topTextColor;
     context.translate( nodeWidth * .4 , nodeHeight * (-.3) );
     context.scale(0.7, 0.7);
